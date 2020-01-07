@@ -36,9 +36,11 @@ class Item extends StatelessWidget {
       case Type.month:
         title = '月';
         unit = ' ${dateTime.month} 月';
-        final remain = 12 - dateTime.month;
+        final remain = DateTime(dateTime.year, dateTime.month + 1).difference(dateTime).inDays;
+        final total =
+            DateTime(dateTime.year, dateTime.month + 1).difference(DateTime(dateTime.year, dateTime.month)).inDays;
         suffix = ' $remain 天';
-        ratio = (12 - remain) / 12;
+        ratio = (total - remain) / total;
         break;
       case Type.week:
         title = '周';
@@ -73,6 +75,7 @@ class Item extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(vertical: 8),
               height: size.width / 30,
+              constraints: BoxConstraints(minHeight: 35),
               child: CustomPaint(
                 painter: _ProgressPainter(Color(conf.itemBackgroundColor), Color(conf.itemForegroundColor),
                     Color(conf.itemTextColor), Radius.circular(conf.radius), ratio),
