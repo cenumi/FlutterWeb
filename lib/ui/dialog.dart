@@ -36,37 +36,37 @@ class _SettingDialogState extends State<SettingDialog> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(labelText: '背景颜色(ARGB)',isDense: true),
-                initialValue: _conf.backgroundColor.toRadixString(16),
+                decoration: InputDecoration(labelText: '背景颜色(ARGB)', isDense: true),
+                initialValue: _conf.backgroundColor.toRadixString(16).toUpperCase(),
                 validator: (s) => RegExp(r'[a-fA-F0-9]{1,8}').hasMatch(s) ? null : '请填写十六进制ARGB颜色值',
                 onSaved: (s) => _conf.backgroundColor = int.parse('0x$s'),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: '进度条背景色(ARGB)',isDense: true),
-                initialValue: _conf.itemBackgroundColor.toRadixString(16),
+                decoration: InputDecoration(labelText: '进度条背景色(ARGB)', isDense: true),
+                initialValue: _conf.itemBackgroundColor.toRadixString(16).toUpperCase(),
                 validator: (s) => RegExp(r'[a-fA-F0-9]{1,8}').hasMatch(s) ? null : '请填写十六进制ARGB颜色值',
                 onSaved: (s) => _conf.itemBackgroundColor = int.parse('0x$s'),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: '进度条前景色(ARGB)',isDense: true),
-                initialValue: _conf.itemForegroundColor.toRadixString(16),
+                decoration: InputDecoration(labelText: '进度条前景色(ARGB)', isDense: true),
+                initialValue: _conf.itemForegroundColor.toRadixString(16).toUpperCase(),
                 validator: (s) => RegExp(r'[a-fA-F0-9]{1,8}').hasMatch(s) ? null : '请填写十六进制ARGB颜色值',
                 onSaved: (s) => _conf.itemForegroundColor = int.parse('0x$s'),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: '文字颜色(ARGB)',isDense: true),
-                initialValue: _conf.textColor.toRadixString(16),
+                decoration: InputDecoration(labelText: '文字颜色(ARGB)', isDense: true),
+                initialValue: _conf.textColor.toRadixString(16).toUpperCase(),
                 validator: (s) => RegExp(r'[a-fA-F0-9]{1,8}').hasMatch(s) ? null : '请填写十六进制ARGB颜色值',
                 onSaved: (s) => _conf.textColor = int.parse('0x$s'),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: '进度条文字颜色(ARGB)',isDense: true),
-                initialValue: _conf.itemTextColor.toRadixString(16),
+                decoration: InputDecoration(labelText: '进度条文字颜色(ARGB)', isDense: true),
+                initialValue: _conf.itemTextColor.toRadixString(16).toUpperCase(),
                 validator: (s) => RegExp(r'[a-fA-F0-9]{1,8}').hasMatch(s) ? null : '请填写十六进制ARGB颜色值',
                 onSaved: (s) => _conf.itemTextColor = int.parse('0x$s'),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: '进度条边框弧度',isDense: true),
+                decoration: InputDecoration(labelText: '进度条边框弧度', isDense: true),
                 initialValue: _conf.radius.toString(),
                 validator: (s) => RegExp(r'^\d+(.\d+)?$').hasMatch(s) ? null : '请填写数字',
                 onSaved: (s) => _conf.radius = double.parse('$s'),
@@ -79,8 +79,6 @@ class _SettingDialogState extends State<SettingDialog> {
       ],
     );
   }
-
-
 
   _save() async {
     final fs = _key.currentState;

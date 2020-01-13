@@ -17,20 +17,23 @@ class _MyHomePageState extends State<MyHomePage> {
   StreamController<DateTime> _controller;
   StreamController<ColorConfig> _colorController;
   Timer _timer;
-  Map config;
 
   @override
   void initState() {
     _colorController = StreamController();
-    SharedPreferences.getInstance().then((sp) {
-      final conf = sp.getString('config');
-      if (conf != null) _colorController.add(ColorConfig.fromJson(jsonDecode(conf)));
-    });
     _controller = StreamController();
     _timer = Timer.periodic(Duration(seconds: 1), (t) {
       _controller.add(DateTime.now());
     });
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() async {
+    final sp = await SharedPreferences.getInstance();
+    final conf = sp.getString('config');
+    if (conf != null) _colorController.add(ColorConfig.fromJson(jsonDecode(conf)));
+    super.didChangeDependencies();
   }
 
   @override
@@ -56,11 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 0,
                 actions: <Widget>[
                   Builder(
-                      builder: (ctx) =>
-                          IconButton(icon: Icon(Icons.settings), onPressed: () => _showDialog(ctx, config.data))),
-                  IconButton(
-                      icon: Icon(Icons.info_outline),
-                      onPressed: () => showAboutDialog(context: context, children: [Text('进度！！！')]))
+                      builder: (ctx) => IconButton(
+                          icon: Icon(Icons.settings),
+                          tooltip: '颜色配置设定',
+                          onPressed: () => _showDialog(ctx, config.data))),
+//                  IconButton(icon: Icon(Icons.info_outline), onPressed: () {})
                 ],
               ),
               backgroundColor: Color(config.data.backgroundColor),

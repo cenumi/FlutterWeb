@@ -119,6 +119,7 @@ class _ProgressPainter extends CustomPainter {
   @override
   bool shouldRepaint(_ProgressPainter oldDelegate) {
     return oldDelegate.ratio != ratio ||
+        oldDelegate.radius != radius ||
         oldDelegate.textColor != textColor ||
         oldDelegate.backgroundColor != backgroundColor ||
         oldDelegate.foregroundColor != foregroundColor;
