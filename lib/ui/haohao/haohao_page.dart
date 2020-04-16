@@ -10,11 +10,13 @@ class HaoHaoPage extends StatefulWidget {
 }
 
 class _HaoHaoPageState extends State<HaoHaoPage> {
-  final player = VideoPlayerController.network('https://d1.urlgot.top/files/1587003766814031023.mp4?n=黑人抬棺原版视频_.mp4&t=c356d4d4a7f1c2f11fb95598cd950da8');
+  VideoPlayerController player;
   ChewieController chewieController;
 
   @override
   void initState() {
+    player = VideoPlayerController.network(
+        'https://d1.urlgot.top/files/1587003766814031023.mp4?n=黑人抬棺原版视频_.mp4&t=c356d4d4a7f1c2f11fb95598cd950da8');
     chewieController = ChewieController(
       autoInitialize: true,
       videoPlayerController: player,
@@ -37,11 +39,7 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Container(
-            child: Chewie(
-              controller: chewieController,
-            ),
-          ),
+          Container(child: Chewie(controller: chewieController)),
           AnimatedText(),
         ],
       ),
@@ -74,9 +72,7 @@ class _AnimatedTextState extends State<AnimatedText> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Center(
-      child: Text('浩浩哥哥我爱你', style: TextStyle(color: color, fontSize: 40)),
-    ));
+    return IgnorePointer(
+        child: Container(alignment: Alignment.center, child: Text('浩浩哥哥我爱你', style: TextStyle(color: color, fontSize: 40))));
   }
 }
