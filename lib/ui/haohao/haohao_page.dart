@@ -18,12 +18,15 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
     player = VideoPlayerController.network(
         'https://d1.urlgot.top/files/1587003766814031023.mp4?n=黑人抬棺原版视频_.mp4&t=c356d4d4a7f1c2f11fb95598cd950da8');
     chewieController = ChewieController(
-      autoInitialize: true,
       videoPlayerController: player,
       aspectRatio: 16 / 9,
-      autoPlay: true,
+      autoInitialize: true,
       looping: true,
     );
+//    timer = Timer.periodic(Duration(seconds: 5), (t) {
+//      chewieController.play();
+//    });
+
     super.initState();
   }
 
@@ -68,6 +71,11 @@ class _AnimatedTextState extends State<AnimatedText> {
       });
     });
     super.initState();
+  }
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 
   @override
