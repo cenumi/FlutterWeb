@@ -10,7 +10,7 @@ class HaoHaoPage extends StatefulWidget {
 }
 
 class _HaoHaoPageState extends State<HaoHaoPage> {
-  final player = VideoPlayerController.asset('1.mp4');
+  final player = VideoPlayerController.network('https://d1.urlgot.top/files/1587003766814031023.mp4?n=黑人抬棺原版视频_.mp4&t=c356d4d4a7f1c2f11fb95598cd950da8');
   ChewieController chewieController;
 
   @override
@@ -22,7 +22,6 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
       autoPlay: true,
       looping: true,
     );
-    chewieController.play();
     super.initState();
   }
 
@@ -35,6 +34,7 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
 
   @override
   Widget build(BuildContext context) {
+    chewieController.play();
     return Scaffold(
       body: Stack(
         children: <Widget>[
