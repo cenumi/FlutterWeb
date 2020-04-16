@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web/ui/data.dart';
+import 'package:flutter_web/ui/progress/data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingDialog extends StatefulWidget {

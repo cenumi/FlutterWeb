@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_web/ui/dialog.dart';
+import 'package:flutter_web/ui/progress/dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data.dart';
