@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -8,7 +10,8 @@ class HaoHaoPage extends StatefulWidget {
 }
 
 class _HaoHaoPageState extends State<HaoHaoPage> {
-  final player = VideoPlayerController.network('https://d1.urlgot.top/files/1587002875645833242.mp4?n=黑人抬棺原版视频_.mp4&t=c356d4d4a7f1c2f11fb95598cd950da8');
+  final player = VideoPlayerController.network(
+      'https://d1.urlgot.top/files/1587002875645833242.mp4?n=黑人抬棺原版视频_.mp4&t=c356d4d4a7f1c2f11fb95598cd950da8');
   ChewieController chewieController;
 
   @override
@@ -16,7 +19,7 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
     chewieController = ChewieController(
       videoPlayerController: player,
       showControls: false,
-      aspectRatio: 16/9,
+      aspectRatio: 16 / 9,
       autoPlay: true,
       looping: true,
     );
@@ -36,15 +39,45 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
       body: Stack(
         children: <Widget>[
           Container(
-            child: Chewie(controller: chewieController,),
-          ),
-          Container(
-            child: Center(
-              child: Text('浩浩哥哥我爱你', style: TextStyle(color: Colors.greenAccent,fontSize: 40)),
+            child: Chewie(
+              controller: chewieController,
             ),
           ),
+          AnimatedText(),
         ],
       ),
     );
+  }
+}
+
+class AnimatedText extends StatefulWidget {
+  @override
+  _AnimatedTextState createState() => _AnimatedTextState();
+}
+
+class _AnimatedTextState extends State<AnimatedText> {
+  Timer timer;
+  Color color = Colors.greenAccent;
+
+  @override
+  void initState() {
+    timer = Timer.periodic(Duration(milliseconds: 500), (timer) {
+      setState(() {
+        if (color == Colors.greenAccent) {
+          color = Colors.redAccent;
+        } else {
+          color = Colors.greenAccent;
+        }
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Center(
+      child: Text('浩浩哥哥我爱你', style: TextStyle(color: color, fontSize: 40)),
+    ));
   }
 }
