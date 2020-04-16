@@ -34,7 +34,6 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
 
   @override
   Widget build(BuildContext context) {
-    chewieController.play();
     return Scaffold(
       body: Stack(
         children: <Widget>[
