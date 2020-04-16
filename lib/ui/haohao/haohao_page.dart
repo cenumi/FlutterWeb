@@ -16,8 +16,8 @@ class _HaoHaoPageState extends State<HaoHaoPage> {
   @override
   void initState() {
     chewieController = ChewieController(
+      autoInitialize: true,
       videoPlayerController: player,
-      showControls: false,
       aspectRatio: 16 / 9,
       autoPlay: true,
       looping: true,
